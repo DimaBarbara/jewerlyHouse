@@ -1,26 +1,57 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 
 @Injectable()
 export class ItemsService {
-  create(createItemDto: CreateItemDto) {
-    return 'This action adds a new item';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createItemDto: CreateItemDto) {
+    const item = await this.prisma.item.create({
+      data: {
+        name: createItemDto.name,
+        price: createItemDto.price,
+        image: createItemDto.image,
+        images: createItemDto.images,
+        material: createItemDto.material ?? '',
+        categoryId: createItemDto.categoryId,
+        collectionId: createItemDto.collectionId,
+        isNew: createItemDto.isNew ?? true,
+      },
+    });
+    return item;
   }
 
-  findAll() {
-    return `This action returns all items`;
+  async findAll() {
+    return this.prisma.item.findMany({
+      include: {
+        category: true,
+        collection: true,
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} item`;
+  async findOne(id: number) {
+    return this.prisma.item.findUnique({
+      where: { id },
+      include: {
+        category: true,
+        collection: true,
+      },
+    });
   }
 
-  update(id: number, updateItemDto: UpdateItemDto) {
-    return `This action updates a #${id} item`;
+  async update(id: number, updateItemDto: UpdateItemDto) {
+    return this.prisma.item.update({
+      where: { id },
+      data: updateItemDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} item`;
+  async remove(id: number) {
+    return this.prisma.item.delete({
+      where: { id },
+    });
   }
 }
