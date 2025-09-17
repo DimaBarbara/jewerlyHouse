@@ -1,6 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
 
 @import "tailwindcss";
 
@@ -17,7 +15,7 @@
 }
 
 body {
-  font-family: var(--font-brygada); 
+  font-family: var(--font-brygada);
   line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
@@ -25,13 +23,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 0.5em;
   line-height: 1.2;
 }
 
 p {
-  
 }
 
 a {
@@ -47,4 +49,3 @@ img {
   max-width: 100%;
   display: block;
 }
-

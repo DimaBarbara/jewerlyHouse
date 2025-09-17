@@ -11,7 +11,7 @@ const AdminPage = lazy(() => import("./pages/AdminPage"));
 
 function App() {
   return (
-    <Suspense fallback={<Loader/>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/catalog" element={<CatalogPage />}></Route>
