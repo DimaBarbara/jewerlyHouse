@@ -2,12 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import entities, { type EntityConfig } from "./config/entities";
 
-
-
 const Bar: React.FC = () => {
   return (
     <aside className="w-64 bg-gray-200 text-black p-4 h-screen">
-      <h3 className="text-3xl font-brygada font-bold mb-4 !pt-4">Admin Panel</h3>
+      <h3 className="text-3xl font-brygada font-bold mb-4 !pt-4">
+        Admin Panel
+      </h3>
       <nav className="flex flex-col space-y-2">
         {entities.map((entity: EntityConfig) => (
           <NavLink
@@ -30,4 +30,3 @@ const Bar: React.FC = () => {
 };
 
 export default Bar;
-

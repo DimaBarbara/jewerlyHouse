@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AdminOrdersAddPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default AdminOrdersAddPage
+export default AdminOrdersAddPage;

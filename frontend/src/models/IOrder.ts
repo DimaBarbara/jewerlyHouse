@@ -1,7 +1,12 @@
 import type { IOrderItem } from "./IOrderItem";
 import type { IUser } from "./IUser";
 
-export type OrderStatus =  'PENDING' | 'PAID' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED';
+export type OrderStatus =
+  | "PENDING"
+  | "PAID"
+  | "SHIPPED"
+  | "DELIVERED"
+  | "CANCELLED";
 
 export interface IOrder {
   id: number;

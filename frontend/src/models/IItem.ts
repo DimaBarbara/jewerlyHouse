@@ -15,6 +15,6 @@ export interface IItem {
   favoritedBy: IFavoriteItem[];
   cartItems: ICartItem[];
   orderItems: IOrderItem[];
-  createdAt: string; 
+  createdAt: string;
   updatedAt: string;
 }

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
+import EditItem from "../../../components/admin/items/EditItem";
 
 const AdminItemsEditPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return(
+  <>
+    <EditItem />
+  </>);
+};
 
-export default AdminItemsEditPage
+export default AdminItemsEditPage;

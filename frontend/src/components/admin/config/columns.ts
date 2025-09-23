@@ -1,7 +1,6 @@
 export interface Columns {
-    accessorKey: string;
-    header: string;
-
+  accessorKey: string;
+  header: string;
 }
 
 export const userColumns: Columns[] = [
@@ -112,3 +111,48 @@ export const orderColumns: Columns[] = [
     header: "UpdatedAt",
   },
 ];
+export const collectionColumns: Columns[] = [
+  {
+    accessorKey: "id",
+    header: "ID",
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "items",
+    header: "Items",
+  },
+  {
+    accessorKey: "createdAt",
+    header: "CreatedAt",
+  },
+  {
+    accessorKey: "updatedAt",
+    header: "UpdatedAt",
+  },
+];
+export const categoryColumns: Columns[] = [
+  {
+    accessorKey: "id",
+    header: "ID",
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "items",
+    header: "Items",
+  },
+  {
+    accessorKey: "createdAt",
+    header: "CreatedAt",
+  },
+  {
+    accessorKey: "updatedAt",
+    header: "UpdatedAt",
+  },
+];
+

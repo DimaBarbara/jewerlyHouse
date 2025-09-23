@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
+import AddItem from "../../../components/admin/items/AddItem";
 
 const AdminItemsAddPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return(
+  <>
+    <AddItem />
+  </>);
+};
 
-export default AdminItemsAddPage
+export default AdminItemsAddPage;

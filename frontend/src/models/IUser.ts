@@ -8,10 +8,10 @@ export interface IUser {
   name: string;
   surname: string;
   password: string;
-  favoriteItems?: IFavoriteItem[]; 
-  cart?: ICart; 
-  orders?: IOrder[]; 
-  role?: 'USER' | 'ADMIN' | string; 
-  createdAt?: string; 
+  favoriteItems?: IFavoriteItem[];
+  cart?: ICart;
+  orders?: IOrder[];
+  role?: "USER" | "ADMIN" | string;
+  createdAt?: string;
   updatedAt?: string;
 }

@@ -4,6 +4,6 @@ import type { IUser } from "./IUser";
 export interface IFavoriteItem {
   userId: number;
   itemId: number;
-  user?: IUser; 
+  user?: IUser;
   item?: IItem;
 }

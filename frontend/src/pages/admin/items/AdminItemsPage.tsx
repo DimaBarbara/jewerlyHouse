@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
+import Items from "../../../components/admin/items/Items";
 
 const AdminItemsPage = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return(
+  <>
+    <Items />
+  </>);
+};
 
-export default AdminItemsPage
+export default AdminItemsPage;
