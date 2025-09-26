@@ -22,7 +22,10 @@ export const categoryAPI = createApi({
       }),
       invalidatesTags: ["category"],
     }),
-    updateCategory: builder.mutation<ICategory, Pick<ICategory, "id"> & Partial<ICategory>>({
+    updateCategory: builder.mutation<
+      ICategory,
+      Pick<ICategory, "id"> & Partial<ICategory>
+    >({
       query: ({ id, ...body }) => ({
         url: `category/${id}`,
         method: "PATCH",

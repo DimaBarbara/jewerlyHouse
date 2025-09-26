@@ -4,13 +4,15 @@ import { itemAPI } from "./items/ItemApi";
 import { orderAPI } from "./orders/OrderApi";
 import { categoryAPI } from "./categories/CategoryApi";
 import { collectionAPI } from "./collections/CollectionApi";
+import { uploadApi } from "./uploads/UploadApi";
 
 const rootReducer = combineReducers({
   [userAPI.reducerPath]: userAPI.reducer,
   [itemAPI.reducerPath]: itemAPI.reducer,
   [orderAPI.reducerPath]: orderAPI.reducer,
   [categoryAPI.reducerPath]: categoryAPI.reducer,
-  [collectionAPI.reducerPath]: collectionAPI.reducer, 
+  [collectionAPI.reducerPath]: collectionAPI.reducer,
+  [uploadApi.reducerPath]: collectionAPI.reducer,
 });
 
 export const setupStore = () => {
@@ -23,7 +25,8 @@ export const setupStore = () => {
         orderAPI.middleware,
         categoryAPI.middleware,
         collectionAPI.middleware,
-      ), 
+        uploadApi.middleware,
+      ),
   });
 };
 

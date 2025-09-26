@@ -9,6 +9,7 @@ import { ItemsModule } from './items/items.module';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { CollectionModule } from './collection/collection.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CollectionModule } from './collection/collection.module';
     PrismaModule,
     ConfigModule.forRoot({ isGlobal: true }),
     CollectionModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

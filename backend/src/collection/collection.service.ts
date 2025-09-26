@@ -27,7 +27,11 @@ export class CollectionService {
   }
 
   findAll() {
-    return this.prisma.collection.findMany();
+    return this.prisma.collection.findMany({
+      include: {
+        items: true,
+      },
+    });
   }
 
   findOne(id: number) {

@@ -22,7 +22,10 @@ export const collectionAPI = createApi({
       }),
       invalidatesTags: ["collection"],
     }),
-    updateCollection: builder.mutation<ICollection, Pick<ICollection, "id"> & Partial<ICollection>>({
+    updateCollection: builder.mutation<
+      ICollection,
+      Pick<ICollection, "id"> & Partial<ICollection>
+    >({
       query: ({ id, ...body }) => ({
         url: `collection/${id}`,
         method: "PATCH",

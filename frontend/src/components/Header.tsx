@@ -2,11 +2,24 @@ import React from "react";
 import Logo from "./Logo";
 import authIcon from "../assets/svg/auth.svg";
 import cartIcon from "../assets/svg/cart.svg";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const { pathname } = useLocation();
+  const isHome = pathname?.includes("/home");
   return (
-    <header className="flex justify-between items-center relative !p-5">
+    <header className="flex justify-between items-center relative !p-5 !pb-0">
       <Logo />
+      {!isHome ? (
+        <Link
+          to={"/"}
+          className="font-brygada hover:underline font-normal text-xl !text-black"
+        >
+          Home
+        </Link>
+      ) : (
+        ""
+      )}
       <div className="flex w-[210px] justify-between items-center">
         <div className="flex items-center">
           <img src={cartIcon} alt="Cart icon" className="w-[25px] h-[25px]" />

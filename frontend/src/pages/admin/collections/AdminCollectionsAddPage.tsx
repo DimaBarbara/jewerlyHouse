@@ -1,11 +1,11 @@
 import AddCollection from "../../../components/admin/collections/AddCollection";
 
 const AdminCollectionsAddPage = () => {
-  return(
-  <>
-    <AddCollection />
-  </>
-  )
+  return (
+    <>
+      <AddCollection />
+    </>
+  );
 };
 
 export default AdminCollectionsAddPage;

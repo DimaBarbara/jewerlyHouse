@@ -3,18 +3,18 @@ import type { IFavoriteItem } from "./IFavoriteItem";
 import type { IOrderItem } from "./IOrderItem";
 
 export interface IItem {
-  id: number;
+  id?: number;
   name: string;
   price: number;
-  image?: string;
+  image: string | null;
   images: string[];
   material: string;
   categoryId: number;
   collectionId: number;
   isNew: boolean;
-  favoritedBy: IFavoriteItem[];
-  cartItems: ICartItem[];
-  orderItems: IOrderItem[];
-  createdAt: string;
-  updatedAt: string;
+  favoritedBy?: IFavoriteItem[];
+  cartItems?: ICartItem[];
+  orderItems?: IOrderItem[];
+  createdAt?: string;
+  updatedAt?: string;
 }

@@ -31,11 +31,15 @@ export class CategoryService {
   }
 
   findAll() {
-    return this.prisma.category.findMany();
+    return this.prisma.category.findMany({
+      include: {
+        items: true,
+      },
+    });
   }
 
   findOne(id: number) {
-    return this.prisma.user.findUnique({
+    return this.prisma.category.findUnique({
       where: { id },
     });
   }

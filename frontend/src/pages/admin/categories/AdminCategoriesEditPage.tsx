@@ -1,10 +1,11 @@
 import EditCategory from "../../../components/admin/categories/EditCategory";
 
 const AdminCategoriesEditPage = () => {
-  return(
-  <>
-    <EditCategory />
-  </>);
+  return (
+    <>
+      <EditCategory />
+    </>
+  );
 };
 
 export default AdminCategoriesEditPage;

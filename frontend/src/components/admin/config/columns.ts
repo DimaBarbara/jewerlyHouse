@@ -60,11 +60,11 @@ export const itemColumns: Columns[] = [
     header: "Material",
   },
   {
-    accessorKey: "category",
+    accessorKey: "category.name",
     header: "Category",
   },
   {
-    accessorKey: "collection",
+    accessorKey: "collection.name",
     header: "Collection",
   },
   {
@@ -121,10 +121,6 @@ export const collectionColumns: Columns[] = [
     header: "Name",
   },
   {
-    accessorKey: "items",
-    header: "Items",
-  },
-  {
     accessorKey: "createdAt",
     header: "CreatedAt",
   },
@@ -143,10 +139,6 @@ export const categoryColumns: Columns[] = [
     header: "Name",
   },
   {
-    accessorKey: "items",
-    header: "Items",
-  },
-  {
     accessorKey: "createdAt",
     header: "CreatedAt",
   },
@@ -155,4 +147,3 @@ export const categoryColumns: Columns[] = [
     header: "UpdatedAt",
   },
 ];
-

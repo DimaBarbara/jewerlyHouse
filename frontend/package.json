@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.8",
+    "@heroui/accordion": "^2.2.23",
+    "@heroui/react": "^2.8.4",
     "@reduxjs/toolkit": "^2.9.0",
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-table": "^8.21.3",

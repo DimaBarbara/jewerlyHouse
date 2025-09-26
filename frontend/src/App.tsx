@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { lazy, Suspense } from "react";
 import Loader from "./pages/Loader";
@@ -16,7 +16,7 @@ const AdminCategoriesAddPage = lazy(
 );
 
 const HomePage = lazy(() => import("./pages/HomePage"));
-const CatalogPage = lazy(() => import("./pages/CatalogPage"));
+const CatalogPage = lazy(() => import("./pages/catalog/CatalogPage"));
 const ItemPage = lazy(() => import("./pages/ItemPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const AdminPage = lazy(() => import("./pages/admin/AdminPage"));
@@ -59,7 +59,8 @@ function App() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/catalog/:id" element={<ItemPage />} />
         <Route path="/admin" element={<AdminPage />}>

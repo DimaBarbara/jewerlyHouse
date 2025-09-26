@@ -2,10 +2,11 @@ import React from "react";
 import AddItem from "../../../components/admin/items/AddItem";
 
 const AdminItemsAddPage = () => {
-  return(
-  <>
-    <AddItem />
-  </>);
+  return (
+    <>
+      <AddItem />
+    </>
+  );
 };
 
 export default AdminItemsAddPage;

@@ -4,13 +4,16 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { updateCollectionValidation } from "../../../validation/Collection";
 import Loader from "../../../pages/Loader";
-import { useGetCollectionByIdQuery, useUpdateCollectionMutation } from "../../../redux/collections/CollectionApi";
+import {
+  useGetCollectionByIdQuery,
+  useUpdateCollectionMutation,
+} from "../../../redux/collections/CollectionApi";
 
 const EditCollection = () => {
   const { id } = useParams<{ id: string }>();
 
   const { data: collection, error, isLoading } = useGetCollectionByIdQuery(id!);
-
+  console.log(useGetCollectionByIdQuery(id!));
   const [updateCollection] = useUpdateCollectionMutation();
 
   const formik = useFormik({
@@ -37,7 +40,9 @@ const EditCollection = () => {
   return (
     <div className="flex flex-col items-start !p-5">
       <div>
-        <h2 className="text-2xl flex font-bold">Update Collection {collection.id}</h2>
+        <h2 className="text-2xl flex font-bold">
+          Update Collection {collection.id}
+        </h2>
         <form onSubmit={formik.handleSubmit} className="flex flex-col gap-2">
           <div className="flex flex-col ">
             <label htmlFor="name" className=" flex items-start">

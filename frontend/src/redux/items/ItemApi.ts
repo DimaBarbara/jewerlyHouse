@@ -6,8 +6,8 @@ export const itemAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
   tagTypes: ["Item"],
   endpoints: (builder) => ({
-    getItems: builder.query<IItem, void>({
-      query: () => "item",
+    getItems: builder.query<IItem[], void>({
+      query: () => "items",
       providesTags: ["Item"],
     }),
     getItemById: builder.query<IItem, string>({
@@ -16,7 +16,7 @@ export const itemAPI = createApi({
     }),
     addItem: builder.mutation<IItem, Omit<IItem, "id">>({
       query: (body) => ({
-        url: "item",
+        url: "items",
         method: "POST",
         body,
       }),
@@ -24,7 +24,7 @@ export const itemAPI = createApi({
     }),
     updateItem: builder.mutation<IItem, Pick<IItem, "id"> & Partial<IItem>>({
       query: ({ id, ...body }) => ({
-        url: `item/${id}`,
+        url: `items/${id}`,
         method: "PATCH",
         body,
       }),
@@ -32,7 +32,7 @@ export const itemAPI = createApi({
     }),
     deleteItem: builder.mutation<void, string>({
       query: (id) => ({
-        url: `item/${id}`,
+        url: `items/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: (result, error, id) => [{ type: "Item", id }],

@@ -10,7 +10,10 @@ import { SyncLoader } from "react-spinners";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import type { ICollection } from "../../../models/ICollection";
-import { useDeleteCollectionMutation, useGetCollectionsQuery } from "../../../redux/collections/CollectionApi";
+import {
+  useDeleteCollectionMutation,
+  useGetCollectionsQuery,
+} from "../../../redux/collections/CollectionApi";
 import { collectionColumns } from "../config/columns";
 
 export default function Collections() {
@@ -22,13 +25,41 @@ export default function Collections() {
   };
 
   const columns = [
-    ...collectionColumns,
+    collectionColumns[0],
+    collectionColumns[1],
+    {
+      accessorKey: "items",
+      header: "Items",
+      cell: ({ row }: { row: Row<ICollection> }) => {
+        const items = row.original.items;
+        if (!items || items.length === 0) {
+          return <span>No items</span>;
+        }
+        return (
+          <div className="flex flex-wrap gap-2">
+            {items.map((item) => (
+              <Link
+                key={item.id}
+                to={`/admin/items/${item.id}/edit`}
+                className="text-blue-500 hover:underline"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        );
+      },
+    },
+    ...collectionColumns.slice(2),
     {
       id: "actions",
       header: "Actions",
       cell: ({ row }: { row: Row<ICollection> }) => (
         <div className="flex gap-2 items-center justify-center">
-          <Link to={`/admin/collections/${row.original.id}/edit`} className="flex">
+          <Link
+            to={`/admin/collections/${row.original.id}/edit`}
+            className="flex"
+          >
             <FaEdit className="text-gray-500 hover:text-gray-700 cursor-pointer transition-colors" />
           </Link>
           <FaTrash
@@ -105,7 +136,9 @@ export default function Collections() {
         </div>
       ) : (
         <div className="flex justify-center items-center h-64">
-          <p className="text-lg text-gray-600">You don't have any collections yet.</p>
+          <p className="text-lg text-gray-600">
+            You don't have any collections yet.
+          </p>
         </div>
       )}
     </div>
