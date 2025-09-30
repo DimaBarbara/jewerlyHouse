@@ -1,8 +1,8 @@
-import ItemList from "../../components/catalog/ItemList";
-import Navigation from "../../components/catalog/Navigation";
-import Sidebar from "../../components/catalog/Sidebar";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Footer from "../../components/common/Footer";
+import Header from "../../components/common/Header";
+import ItemList from "../../components/user/catalog/ItemList";
+import Navigation from "../../components/user/catalog/Navigation";
+import Sidebar from "../../components/user/catalog/Sidebar";
 
 const CatalogPage = () => {
   return (

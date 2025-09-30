@@ -1,8 +1,9 @@
 import React from "react";
-import Logo from "./Logo";
-import authIcon from "../assets/svg/auth.svg";
-import cartIcon from "../assets/svg/cart.svg";
+
+import authIcon from "../../assets/svg/auth.svg";
+import cartIcon from "../../assets/svg/cart.svg";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "./Logo";
 
 const Header = () => {
   const { pathname } = useLocation();

@@ -1,7 +1,7 @@
 import React from "react";
 import { Disclosure } from "@headlessui/react";
-import { useGetCollectionsQuery } from "../../redux/collections/CollectionApi";
-import { useGetCategoriesQuery } from "../../redux/categories/CategoryApi";
+import { useGetCollectionsQuery } from "../../../redux/collections/CollectionApi";
+import { useGetCategoriesQuery } from "../../../redux/categories/CategoryApi";
 
 export default function Accordion() {
   const { data: collections = [], isLoading: isLoadingCollections } =
@@ -20,7 +20,9 @@ export default function Accordion() {
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`${open ? "transform rotate-180" : ""} w-4 h-4 text-black`}
+                className={`${
+                  open ? "transform rotate-180" : ""
+                } w-4 h-4 text-black`}
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -60,7 +62,9 @@ export default function Accordion() {
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`${open ? "transform rotate-180" : ""} w-4 h-4 text-black`}
+                className={`${
+                  open ? "transform rotate-180" : ""
+                } w-4 h-4 text-black`}
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

@@ -3,3 +3,13 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.swiper-pagination-bullet {
+  background-color: #FAFAFA !important; 
+  width: 10px;
+  height: 10px;
+  opacity: 1; 
+}
+.swiper-pagination-bullet-active {
+  background-color: #FAFAFA !important;
+}

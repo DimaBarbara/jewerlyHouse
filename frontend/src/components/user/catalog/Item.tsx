@@ -1,7 +1,8 @@
 import { useState } from "react";
 import cartItemIcon from "../../assets/svg/cartItem.svg";
 import heartIcon from "../../assets/svg/heart.svg";
-import type { IItem } from "../../models/IItem";
+import type { IItem } from "../../../models/IItem";
+import { Link } from "react-router-dom";
 
 interface ItemProps {
   item: IItem;
@@ -22,9 +23,11 @@ const Item = ({ item }: ItemProps) => {
           No image
         </div>
       )}
-      <h3 className="flex font-playfair text-xl font-normal text-black !mb-0">
-        {item.name.toUpperCase()}
-      </h3>
+      <Link to={`/catalog/${item.id}`}>
+        <h3 className="flex font-playfair text-xl font-normal text-black !mb-0">
+          {item.name.toUpperCase()}
+        </h3>
+      </Link>
       <div className="flex justify-between">
         <p className="font-brygada text-lg ">{item.price}$</p>
         <div className="flex gap-2">
@@ -37,7 +40,9 @@ const Item = ({ item }: ItemProps) => {
             src={heartIcon}
             alt="Heart icon"
             className={`w-[23px] h-[23px] cursor-pointer ${
-              liked ? "filter saturate-150 brightness-150 hue-rotate-330 fill-rose-900" : ""
+              liked
+                ? "filter saturate-150 brightness-150 hue-rotate-330 fill-rose-900"
+                : ""
             }`}
             onClick={() => setLiked(!liked)}
           />

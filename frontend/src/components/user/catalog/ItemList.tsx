@@ -1,4 +1,4 @@
-import { useGetItemsQuery } from "../../redux/items/ItemApi";
+import { useGetItemsQuery } from "../../../redux/items/ItemApi";
 import Item from "./Item";
 import { SyncLoader } from "react-spinners";
 

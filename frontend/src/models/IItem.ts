@@ -1,4 +1,6 @@
 import type { ICartItem } from "./ICartItem";
+import type { ICategory } from "./ICategory";
+import type { ICollection } from "./ICollection";
 import type { IFavoriteItem } from "./IFavoriteItem";
 import type { IOrderItem } from "./IOrderItem";
 
@@ -10,7 +12,9 @@ export interface IItem {
   images: string[];
   material: string;
   categoryId: number;
+  category?: ICategory;
   collectionId: number;
+  collection?: ICollection;
   isNew: boolean;
   favoritedBy?: IFavoriteItem[];
   cartItems?: ICartItem[];

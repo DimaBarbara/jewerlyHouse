@@ -1,6 +1,6 @@
 import React from "react";
-import instagramIcon from "../assets/svg/instagram.svg";
-import emailIcon from "../assets/svg/email.svg";
+import instagramIcon from "../../assets/svg/instagram.svg";
+import emailIcon from "../../assets/svg/email.svg";
 import QuestionForm from "./QuestionForm";
 
 const Footer = () => {

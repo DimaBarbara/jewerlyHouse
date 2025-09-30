@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   [orderAPI.reducerPath]: orderAPI.reducer,
   [categoryAPI.reducerPath]: categoryAPI.reducer,
   [collectionAPI.reducerPath]: collectionAPI.reducer,
-  [uploadApi.reducerPath]: collectionAPI.reducer,
+  [uploadApi.reducerPath]: uploadApi.reducer,
 });
 
 export const setupStore = () => {

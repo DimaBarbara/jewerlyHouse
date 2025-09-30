@@ -11,7 +11,7 @@ export const itemAPI = createApi({
       providesTags: ["Item"],
     }),
     getItemById: builder.query<IItem, string>({
-      query: (id) => `item/${id}`,
+      query: (id) => `items/${id}`,
       providesTags: (result, error, id) => [{ type: "Item", id }],
     }),
     addItem: builder.mutation<IItem, Omit<IItem, "id">>({
