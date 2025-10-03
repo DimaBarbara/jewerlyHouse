@@ -5,6 +5,7 @@ import { orderAPI } from "./orders/OrderApi";
 import { categoryAPI } from "./categories/CategoryApi";
 import { collectionAPI } from "./collections/CollectionApi";
 import { uploadApi } from "./uploads/UploadApi";
+import { authApi } from "./auth/AuthApi";
 
 const rootReducer = combineReducers({
   [userAPI.reducerPath]: userAPI.reducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   [categoryAPI.reducerPath]: categoryAPI.reducer,
   [collectionAPI.reducerPath]: collectionAPI.reducer,
   [uploadApi.reducerPath]: uploadApi.reducer,
+  [authApi.reducerPath]: authApi.reducer,
 });
 
 export const setupStore = () => {
@@ -26,6 +28,7 @@ export const setupStore = () => {
         categoryAPI.middleware,
         collectionAPI.middleware,
         uploadApi.middleware,
+        authApi.middleware,
       ),
   });
 };

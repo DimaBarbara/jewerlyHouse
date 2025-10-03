@@ -25,9 +25,12 @@ export class ItemsController {
     return this.itemsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.itemsService.findOne(+id);
+  @Get(':param')
+  find(@Param('param') param: string) {
+    if (!isNaN(+param)) {
+      return this.itemsService.findOne(+param);
+    }
+    return this.itemsService.findByCategory(param);
   }
 
   @Patch(':id')

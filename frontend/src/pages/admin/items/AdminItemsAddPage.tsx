@@ -1,4 +1,3 @@
-import React from "react";
 import AddItem from "../../../components/admin/items/AddItem";
 
 const AdminItemsAddPage = () => {

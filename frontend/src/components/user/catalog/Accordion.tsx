@@ -1,4 +1,3 @@
-import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { useGetCollectionsQuery } from "../../../redux/collections/CollectionApi";
 import { useGetCategoriesQuery } from "../../../redux/categories/CategoryApi";

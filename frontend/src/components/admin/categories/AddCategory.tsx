@@ -2,9 +2,11 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useAddCategoryMutation } from "../../../redux/categories/CategoryApi";
 import { createCategoryValidation } from "../../../validation/Category";
+import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
   const [AddCategory, { isLoading }] = useAddCategoryMutation();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -16,6 +18,7 @@ const AddCategory = () => {
         await AddCategory(values).unwrap();
         toast.success("Category added successfully!");
         resetForm();
+        navigate("/admin/categories");
       } catch (error) {
         console.log(error);
         toast.error("Failed to add category.");

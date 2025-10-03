@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import entities, { type EntityConfig } from "./config/entities";
 

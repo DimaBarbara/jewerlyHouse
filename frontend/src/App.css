@@ -5,11 +5,11 @@
 }
 
 .swiper-pagination-bullet {
-  background-color: #FAFAFA !important; 
+  background-color: #fafafa !important;
   width: 10px;
   height: 10px;
-  opacity: 1; 
+  opacity: 1;
 }
 .swiper-pagination-bullet-active {
-  background-color: #FAFAFA !important;
+  background-color: #fafafa !important;
 }

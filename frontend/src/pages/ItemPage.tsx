@@ -1,4 +1,3 @@
-import React from "react";
 import ItemInfo from "../components/user/catalog/ItemInfo";
 
 import Navigation from "../components/user/catalog/Navigation";

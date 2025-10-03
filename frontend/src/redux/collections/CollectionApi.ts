@@ -12,7 +12,7 @@ export const collectionAPI = createApi({
     }),
     getCollectionById: builder.query<ICollection, string>({
       query: (id) => `collection/${id}`,
-      providesTags: (result, error, id) => [{ type: "collection", id }],
+      providesTags: (_, __, id) => [{ type: "collection", id }],
     }),
     addCollection: builder.mutation<ICollection, Omit<ICollection, "id">>({
       query: (body) => ({
@@ -31,14 +31,14 @@ export const collectionAPI = createApi({
         method: "PATCH",
         body,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "collection", id }],
+      invalidatesTags: (_, __, { id }) => [{ type: "collection", id }],
     }),
     deleteCollection: builder.mutation<void, string>({
       query: (id) => ({
         url: `collection/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [{ type: "collection", id }],
+      invalidatesTags: (_, __, id) => [{ type: "collection", id }],
     }),
   }),
 });

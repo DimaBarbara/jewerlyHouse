@@ -2,9 +2,11 @@ import { useFormik } from "formik";
 import { useAddUserMutation } from "../../../redux/users/UserApi";
 import { toast } from "react-toastify";
 import { createUserValidation } from "../../../validation/User";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
   const [addUser, { isLoading }] = useAddUserMutation();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -19,6 +21,7 @@ const AddUser = () => {
         await addUser(values).unwrap();
         toast.success("User added successfully!");
         resetForm();
+        navigate("/admin/users");
       } catch (error) {
         console.log(error);
         toast.error("Failed to add user.");

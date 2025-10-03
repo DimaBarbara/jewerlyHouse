@@ -1,8 +1,8 @@
 import { useState } from "react";
-import cartItemIcon from "../../assets/svg/cartItem.svg";
-import heartIcon from "../../assets/svg/heart.svg";
+import cartItemIcon from "../../../assets/svg/cartItem.svg";
+import heartIcon from "../../../assets/svg/heart.svg";
 import type { IItem } from "../../../models/IItem";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface ItemProps {
   item: IItem;
@@ -10,6 +10,7 @@ interface ItemProps {
 
 const Item = ({ item }: ItemProps) => {
   const [liked, setLiked] = useState(false);
+  const { category } = useParams<{ category: string }>();
   return (
     <div className="flex flex-col gap-2">
       {item.image ? (
@@ -23,7 +24,7 @@ const Item = ({ item }: ItemProps) => {
           No image
         </div>
       )}
-      <Link to={`/catalog/${item.id}`}>
+      <Link to={`/catalog/${category}/${item.id}`}>
         <h3 className="flex font-playfair text-xl font-normal text-black !mb-0">
           {item.name.toUpperCase()}
         </h3>

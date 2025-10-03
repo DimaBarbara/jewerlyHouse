@@ -1,11 +1,10 @@
-import React from "react";
-import Header from "../components/Header";
+import Footer from "../components/common/Footer";
+import Header from "../components/common/Header";
 import Hero from "../components/common/Hero";
-import Footer from "../components/Footer";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="relative">
       <div className="bg-gradient-to-b from-gray-200 to-gray-300">
         <Header />
         <Hero />

@@ -4,6 +4,8 @@ import { lazy, Suspense } from "react";
 import Loader from "./pages/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RegisterForm from "./components/user/auth/RegisterForm";
+import LoginForm from "./components/user/auth/LoginForm";
 
 const AdminCategoriesPage = lazy(
   () => import("./pages/admin/categories/AdminCategoriesPage"),
@@ -19,6 +21,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const CatalogPage = lazy(() => import("./pages/catalog/CatalogPage"));
 const ItemPage = lazy(() => import("./pages/ItemPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const CartPage = lazy(() => import("./pages/cart/CartPage"));
 const AdminPage = lazy(() => import("./pages/admin/AdminPage"));
 
 const AdminUsersPage = lazy(() => import("./pages/admin/users/AdminUsersPage"));
@@ -61,8 +64,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" replace />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/catalog/:id" element={<ItemPage />} />
+        <Route path="/catalog/:category" element={<CatalogPage />} />
+        <Route path="/catalog/:category/:id" element={<ItemPage />} />
         <Route path="/admin" element={<AdminPage />}>
           <Route path="users" element={<AdminUsersPage />} />
           <Route path="users/:id/edit" element={<AdminUsersEditPage />} />
@@ -74,6 +77,7 @@ function App() {
           <Route path="items/:id/edit" element={<AdminItemsEditPage />} />
           <Route path="items/add" element={<AdminItemsAddPage />} />
           <Route path="categories" element={<AdminCategoriesPage />} />
+          <Route path="cart" element={<CartPage />} />
           <Route
             path="categories/:id/edit"
             element={<AdminCategoriesEditPage />}
@@ -89,6 +93,8 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
+      <LoginForm />
+      <RegisterForm />
       <ToastContainer position="top-right" autoClose={3000} />
     </Suspense>
   );

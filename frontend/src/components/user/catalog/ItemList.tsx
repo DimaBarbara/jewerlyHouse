@@ -1,9 +1,12 @@
-import { useGetItemsQuery } from "../../../redux/items/ItemApi";
+import { useParams } from "react-router-dom";
+import { useFindByCategoryQuery } from "../../../redux/items/ItemApi";
 import Item from "./Item";
 import { SyncLoader } from "react-spinners";
 
 const ItemList = () => {
-  const { data: items = [], error, isLoading } = useGetItemsQuery();
+  const { category } = useParams<{ category: string }>();
+  const cat = category || "all";
+  const { data: items = [], error, isLoading } = useFindByCategoryQuery(cat);
 
   if (isLoading) {
     return (
@@ -22,9 +25,14 @@ const ItemList = () => {
     }
 
     return (
-      <div className="error-state">
-        <h2>{errorMessage}</h2>
-        <button onClick={() => window.location.reload()}>Tyy again</button>
+      <div className="flex flex-col items-center mx-auto ">
+        <h2 className="text-red-700">{errorMessage}</h2>
+        <button
+          className="border rounded-md !p-2"
+          onClick={() => window.location.reload()}
+        >
+          Try again
+        </button>
       </div>
     );
   }

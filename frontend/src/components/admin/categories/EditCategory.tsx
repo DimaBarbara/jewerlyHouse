@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import Loader from "../../../pages/Loader";
@@ -10,6 +10,7 @@ import { updateCategoryValidation } from "../../../validation/Category";
 
 const EditCategory = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const { data: category, error, isLoading } = useGetCategoryByIdQuery(id!);
   console.log(useGetCategoryByIdQuery(id!));
@@ -25,6 +26,7 @@ const EditCategory = () => {
         await updateCategory({ id: +id!, ...values }).unwrap();
         toast.success("Category updated successfully!");
         resetForm();
+        navigate("/admin/categories");
       } catch (error) {
         console.log(error);
         toast.error("Failed to update category.");

@@ -2,9 +2,11 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useAddCollectionMutation } from "../../../redux/collections/CollectionApi";
 import { createCollectionValidation } from "../../../validation/Collection";
+import { useNavigate } from "react-router-dom";
 
 const AddCollection = () => {
   const [AddCollection, { isLoading }] = useAddCollectionMutation();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -16,6 +18,7 @@ const AddCollection = () => {
         await AddCollection(values).unwrap();
         toast.success("Collection added successfully!");
         resetForm();
+        navigate("/admin/collections");
       } catch (error) {
         console.log(error);
         toast.error("Failed to add collection.");

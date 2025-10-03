@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import type { IItem } from "../../../models/IItem";
 import SwiperImages from "../../common/SwiperImages";
 import DoubleButton from "../../common/DoubleButton";
-import Input from "../../common/Input"
+import Input from "../../common/Input";
 
 interface RouteParams extends Record<string, string | undefined> {
   id: string;
@@ -45,9 +45,9 @@ function ItemInfo() {
         <div className="flex flex-col items-start">
           <div className=" flex flex-col gap-3 !mb-8">
             <p className="font-brygada font-medium text-xl text-black">
-            *Quantity
-          </p>
-          <Input />
+              *Quantity
+            </p>
+            <Input />
           </div>
           <DoubleButton />
         </div>

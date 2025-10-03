@@ -12,7 +12,7 @@ export const orderAPI = createApi({
     }),
     getOrderById: builder.query<IOrder, string>({
       query: (id) => `order/${id}`,
-      providesTags: (result, error, id) => [{ type: "Order", id }],
+      providesTags: (_, __, id) => [{ type: "Order", id }],
     }),
     addOrder: builder.mutation<IOrder, Omit<IOrder, "id">>({
       query: (body) => ({
@@ -29,7 +29,7 @@ export const orderAPI = createApi({
           method: "PATCH",
           body,
         }),
-        invalidatesTags: (result, error, { id }) => [{ type: "Order", id }],
+        invalidatesTags: (_, __, { id }) => [{ type: "Order", id }],
       },
     ),
     deleteOrder: builder.mutation<void, string>({
@@ -37,7 +37,7 @@ export const orderAPI = createApi({
         url: `order/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [{ type: "Order", id }],
+      invalidatesTags: (_, __, id) => [{ type: "Order", id }],
     }),
   }),
 });

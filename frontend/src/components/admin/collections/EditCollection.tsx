@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ import {
 
 const EditCollection = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const { data: collection, error, isLoading } = useGetCollectionByIdQuery(id!);
   console.log(useGetCollectionByIdQuery(id!));
@@ -26,6 +27,7 @@ const EditCollection = () => {
         await updateCollection({ id: +id!, ...values }).unwrap();
         toast.success("Collection updated successfully!");
         resetForm();
+        navigate("/admin/collections");
       } catch (error) {
         console.log(error);
         toast.error("Failed to update collection.");

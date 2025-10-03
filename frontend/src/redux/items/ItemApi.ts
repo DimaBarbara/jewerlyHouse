@@ -12,7 +12,11 @@ export const itemAPI = createApi({
     }),
     getItemById: builder.query<IItem, string>({
       query: (id) => `items/${id}`,
-      providesTags: (result, error, id) => [{ type: "Item", id }],
+      providesTags: (_, __, id) => [{ type: "Item", id }],
+    }),
+    findByCategory: builder.query<IItem[], string>({
+      query: (category) => `items/${category}`,
+      providesTags: (_, __, category) => [{ type: "Item", category }],
     }),
     addItem: builder.mutation<IItem, Omit<IItem, "id">>({
       query: (body) => ({
@@ -28,19 +32,20 @@ export const itemAPI = createApi({
         method: "PATCH",
         body,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "Item", id }],
+      invalidatesTags: (_, __, { id }) => [{ type: "Item", id }],
     }),
     deleteItem: builder.mutation<void, string>({
       query: (id) => ({
         url: `items/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [{ type: "Item", id }],
+      invalidatesTags: (_, __, id) => [{ type: "Item", id }],
     }),
   }),
 });
 
 export const {
+  useFindByCategoryQuery,
   useGetItemsQuery,
   useGetItemByIdQuery,
   useAddItemMutation,

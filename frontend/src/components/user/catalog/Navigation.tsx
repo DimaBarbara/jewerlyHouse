@@ -1,4 +1,3 @@
-import React from "react";
 import navigationList, { type NavigationType } from "../../../utils/navigation";
 import { NavLink } from "react-router-dom";
 const Navigation = () => {

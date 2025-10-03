@@ -6,10 +6,12 @@ import { useGetCategoriesQuery } from "../../../redux/categories/CategoryApi";
 import { useGetCollectionsQuery } from "../../../redux/collections/CollectionApi";
 import { useUploadFileMutation } from "../../../redux/uploads/UploadApi";
 import { useUpload } from "../../../hooks/upload";
+import { useNavigate } from "react-router-dom";
 
 const AddItem = () => {
   const [addItem, { isLoading: isAdding }] = useAddItemMutation();
   const [uploadMutation] = useUploadFileMutation();
+  const navigate = useNavigate();
   const { uploadFile } = useUpload(async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -43,6 +45,7 @@ const AddItem = () => {
         await addItem(itemData).unwrap();
         toast.success("Item added successfully!");
         resetForm();
+        navigate("/admin/items");
       } catch (error) {
         console.error("Failed to add item:", error);
         toast.error("Failed to add item.");

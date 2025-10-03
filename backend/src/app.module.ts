@@ -10,11 +10,11 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { CollectionModule } from './collection/collection.module';
 import { UploadModule } from './upload/upload.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
     UserModule,
-    AuthModule,
     CategoryModule,
     OrdersModule,
     ItemsModule,
@@ -22,6 +22,8 @@ import { UploadModule } from './upload/upload.module';
     ConfigModule.forRoot({ isGlobal: true }),
     CollectionModule,
     UploadModule,
+    AuthModule,
+    CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -12,7 +12,7 @@ export const categoryAPI = createApi({
     }),
     getCategoryById: builder.query<ICategory, string>({
       query: (id) => `category/${id}`,
-      providesTags: (result, error, id) => [{ type: "category", id }],
+      providesTags: (_, __, id) => [{ type: "category", id }],
     }),
     addCategory: builder.mutation<ICategory, Omit<ICategory, "id">>({
       query: (body) => ({
@@ -31,14 +31,14 @@ export const categoryAPI = createApi({
         method: "PATCH",
         body,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "category", id }],
+      invalidatesTags: (_, __, { id }) => [{ type: "category", id }],
     }),
     deleteCategory: builder.mutation<void, string>({
       query: (id) => ({
         url: `category/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [{ type: "category", id }],
+      invalidatesTags: (_, __, id) => [{ type: "category", id }],
     }),
   }),
 });

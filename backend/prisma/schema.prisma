@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -84,6 +85,7 @@ model CartItem {
   item     Item @relation(fields: [itemId], references: [id])
   itemId   Int
   quantity Int 
+  @@unique([cartId, itemId]) 
 }
 
 model Order {

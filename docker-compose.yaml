@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # --- БАЗА ДАННЫХ (POSTGRESQL) ---
+  db:
+    image: postgres:16-alpine   
+    container_name: jewelry-db
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    # === ИСПРАВЛЕНИЕ: ДОБАВЛЯЕМ ПРОВЕРКУ ЗДОРОВЬЯ ===
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s # Проверять каждые 5 секунд
+      timeout: 5s  # Ждать 5 секунд
+      retries: 5   # Повторить 5 раз
+    # ===============================================
+
+  # --- REDIS ---
+  redis:
+    image: redis:6.2-alpine
+    container_name: app-redis
+    env_file: 
+      - ./backend/.env
+    ports:
+      - "6379:6379"          
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  # --- БЭКЕНД (NESTJS) ---
+  backend:
+    build:
+      context: ./backend           
+    container_name: jewelry-backend
+    env_file: 
+      - ./backend/.env
+    volumes:
+      - ./backend:/app             
+      - backend_node_modules:/app/node_modules 
+    ports:
+      - "3000:3000"            
+    restart: always
+    # === ИСПРАВЛЕНИЕ: ЖДЕМ, ПОКА DB НЕ СТАНЕТ HEALTHY ===
+    depends_on:
+      db:
+        condition: service_healthy # Ждет, пока healthcheck DB не пройдет
+      redis:
+        condition: service_started 
+    # ===================================================
+
+  # --- ФРОНТЕНД (NGINX) ---
+  frontend:
+    build:
+      context: ./frontend
+    container_name: jewelry-frontend
+    # NOTE: env_file для фронтенда не нужен, если вы используете переменные сборки.
+    # Но оставляем, как было в вашей версии:
+    env_file:
+      - ./backend/.env
+    ports:
+      - "80:80"                 
+    depends_on:
+      - backend                
+    restart: always
+
+volumes:
+  redis_data:
+  postgres_data:
+  backend_node_modules:

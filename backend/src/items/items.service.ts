@@ -43,6 +43,39 @@ export class ItemsService {
     });
   }
 
+  async findByCategory(categoryName: string) {
+    if (categoryName === 'all') {
+      return this.prisma.item.findMany({
+        include: {
+          category: true,
+          collection: true,
+        },
+      });
+    }
+    if (categoryName === 'new') {
+      return this.prisma.item.findMany({
+        where: {
+          isNew: true,
+        },
+        include: {
+          category: true,
+          collection: true,
+        },
+      });
+    }
+    return this.prisma.item.findMany({
+      where: {
+        category: {
+          name: categoryName,
+        },
+      },
+      include: {
+        category: true,
+        collection: true,
+      },
+    });
+  }
+
   async update(id: number, updateItemDto: UpdateItemDto) {
     return this.prisma.item.update({
       where: { id },

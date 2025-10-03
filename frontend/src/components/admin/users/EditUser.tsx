@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetUserByIdQuery,
   useUpdateUserMutation,
@@ -10,6 +10,7 @@ import Loader from "../../../pages/Loader";
 
 const EditUser = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const { data: user, error, isLoading } = useGetUserByIdQuery(id!);
 
@@ -27,6 +28,7 @@ const EditUser = () => {
         await updateUser({ id: +id!, ...values }).unwrap();
         toast.success("User updated successfully!");
         resetForm();
+        navigate("/admin/users");
       } catch (error) {
         console.log(error);
         toast.error("Failed to update user.");

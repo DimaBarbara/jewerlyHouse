@@ -12,7 +12,7 @@ export const userAPI = createApi({
     }),
     getUserById: builder.query<IUser, string>({
       query: (id) => `user/${id}`,
-      providesTags: (result, error, id) => [{ type: "User", id }],
+      providesTags: (_, __, id) => [{ type: "User", id }],
     }),
     addUser: builder.mutation<IUser, Omit<IUser, "id">>({
       query: (body) => ({
@@ -28,14 +28,14 @@ export const userAPI = createApi({
         method: "PATCH",
         body,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "User", id }],
+      invalidatesTags: (_, __, { id }) => [{ type: "User", id }],
     }),
     deleteUser: builder.mutation<void, string>({
       query: (id) => ({
         url: `user/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [{ type: "User", id }],
+      invalidatesTags: (_, __, id) => [{ type: "User", id }],
     }),
   }),
 });
