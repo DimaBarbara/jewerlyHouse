@@ -6,7 +6,7 @@ import {
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { updateUserValidation } from "../../../validation/User";
-import Loader from "../../../pages/Loader";
+import Loader from "../../../pages/common/Loader";
 
 const EditUser = () => {
   const { id } = useParams<{ id: string }>();

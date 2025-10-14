@@ -7,3 +7,21 @@ export interface ICart {
   user?: IUser;
   cartItems: ICartItem[];
 }
+export interface AddItemArgs {
+  userId: number;
+  itemId: number;
+  quantityToAdd: number;
+}
+
+export interface AddItemBody {
+  itemId: number;
+  quantityToAdd: number;
+}
+export interface DeleteItemArgs {
+  userId: number;
+  itemId: number;
+}
+
+export interface DeleteItemBody {
+  itemId: number;
+}

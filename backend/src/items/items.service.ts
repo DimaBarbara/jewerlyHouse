@@ -84,8 +84,9 @@ export class ItemsService {
   }
 
   async remove(id: number) {
-    return this.prisma.item.delete({
+    return this.prisma.item.update({
       where: { id },
+      data: { isActive: false },
     });
   }
 }

@@ -5,7 +5,7 @@ import { createItemValidation } from "../../../validation/Item";
 import { useGetCategoriesQuery } from "../../../redux/categories/CategoryApi";
 import { useGetCollectionsQuery } from "../../../redux/collections/CollectionApi";
 import { useUploadFileMutation } from "../../../redux/uploads/UploadApi";
-import { useUpload } from "../../../hooks/upload";
+import { useUpload } from "../../../hooks/useUpload";
 import { useNavigate } from "react-router-dom";
 
 const AddItem = () => {

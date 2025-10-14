@@ -6,6 +6,10 @@ import { categoryAPI } from "./categories/CategoryApi";
 import { collectionAPI } from "./collections/CollectionApi";
 import { uploadApi } from "./uploads/UploadApi";
 import { authApi } from "./auth/AuthApi";
+import { cartAPI } from "./cart/CartApi";
+import authReducer from "./auth/authSlice";
+import { emailApi } from "./form/FormApi";
+import { favoritesAPI } from "./favorites/FavoriteApit";
 
 const rootReducer = combineReducers({
   [userAPI.reducerPath]: userAPI.reducer,
@@ -15,6 +19,10 @@ const rootReducer = combineReducers({
   [collectionAPI.reducerPath]: collectionAPI.reducer,
   [uploadApi.reducerPath]: uploadApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
+  [cartAPI.reducerPath]: cartAPI.reducer,
+  [emailApi.reducerPath]: emailApi.reducer,
+  [favoritesAPI.reducerPath]: favoritesAPI.reducer,
+  auth: authReducer,
 });
 
 export const setupStore = () => {
@@ -29,6 +37,9 @@ export const setupStore = () => {
         collectionAPI.middleware,
         uploadApi.middleware,
         authApi.middleware,
+        cartAPI.middleware,
+        emailApi.middleware,
+        favoritesAPI.middleware,
       ),
   });
 };

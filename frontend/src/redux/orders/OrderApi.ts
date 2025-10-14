@@ -3,7 +3,16 @@ import type { IOrder } from "../../models/IOrder";
 
 export const orderAPI = createApi({
   reducerPath: "orderApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3000/api",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   tagTypes: ["Order"],
   endpoints: (builder) => ({
     getOrders: builder.query<IOrder, void>({

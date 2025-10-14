@@ -5,12 +5,14 @@ interface inputProps {
   min?: number;
   max?: number;
   step?: number;
+  quantity?: number;
 }
 const Stepper = ({
-  initialValue = 1, // Сделаем 1 по умолчанию, как на картинке
-  min = 1, // Установим минимум 1
+  initialValue = 1,
+  min = 1,
   max = 100,
   step = 1,
+  quantity,
 }: inputProps) => {
   const [value, setValue] = useState<number>(initialValue);
 

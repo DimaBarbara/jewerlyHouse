@@ -3,7 +3,16 @@ import type { IItem } from "../../models/IItem";
 
 export const itemAPI = createApi({
   reducerPath: "itemApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3000/api",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   tagTypes: ["Item"],
   endpoints: (builder) => ({
     getItems: builder.query<IItem[], void>({

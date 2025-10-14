@@ -11,6 +11,8 @@ import { PrismaModule } from './prisma/prisma.module';
 import { CollectionModule } from './collection/collection.module';
 import { UploadModule } from './upload/upload.module';
 import { CartModule } from './cart/cart.module';
+import { EmailModule } from './email/email.module';
+import { FavoritesModule } from './favorites/favorites.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { CartModule } from './cart/cart.module';
     UploadModule,
     AuthModule,
     CartModule,
+    EmailModule,
+    FavoritesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

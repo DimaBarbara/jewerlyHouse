@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { updateCollectionValidation } from "../../../validation/Collection";
-import Loader from "../../../pages/Loader";
+import Loader from "../../../pages/common/Loader";
 import {
   useGetCollectionByIdQuery,
   useUpdateCollectionMutation,

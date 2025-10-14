@@ -1,11 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { lazy, Suspense } from "react";
-import Loader from "./pages/Loader";
+import Loader from "./pages/common/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import RegisterForm from "./components/user/auth/RegisterForm";
-import LoginForm from "./components/user/auth/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
+import LoginForm from "./components/auth/LoginForm";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const AdminCategoriesPage = lazy(
   () => import("./pages/admin/categories/AdminCategoriesPage"),
@@ -17,11 +18,18 @@ const AdminCategoriesAddPage = lazy(
   () => import("./pages/admin/categories/AdminCategoriesAddPage"),
 );
 
-const HomePage = lazy(() => import("./pages/HomePage"));
+const HomePage = lazy(() => import("./pages/home/HomePage"));
 const CatalogPage = lazy(() => import("./pages/catalog/CatalogPage"));
-const ItemPage = lazy(() => import("./pages/ItemPage"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const ItemPage = lazy(() => import("./pages/catalog/ItemPage"));
+const NotFoundPage = lazy(() => import("./pages/common/NotFoundPage"));
 const CartPage = lazy(() => import("./pages/cart/CartPage"));
+const DeliveryPage = lazy(() => import("./pages/cart/DeliveryPage"));
+const AccountPage = lazy(() => import("./pages/account/AccountPage"));
+const AccountMainPage = lazy(() => import("./pages/account/AccountMainPage"));
+const FavoritesItemPage = lazy(
+  () => import("./pages/account/FavoritesItemPage"),
+);
+const OrdersPage = lazy(() => import("./pages/account/OrdersPage"));
 const AdminPage = lazy(() => import("./pages/admin/AdminPage"));
 
 const AdminUsersPage = lazy(() => import("./pages/admin/users/AdminUsersPage"));
@@ -66,30 +74,71 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/catalog/:category" element={<CatalogPage />} />
         <Route path="/catalog/:category/:id" element={<ItemPage />} />
-        <Route path="/admin" element={<AdminPage />}>
-          <Route path="users" element={<AdminUsersPage />} />
-          <Route path="users/:id/edit" element={<AdminUsersEditPage />} />
-          <Route path="users/add" element={<AdminUsersAddPage />} />
-          <Route path="orders" element={<AdminOrdersPage />} />
-          <Route path="orders/:id/edit" element={<AdminOrdersEditPage />} />
-          <Route path="orders/add" element={<AdminOrdersAddPage />} />
-          <Route path="items" element={<AdminItemsPage />} />
-          <Route path="items/:id/edit" element={<AdminItemsEditPage />} />
-          <Route path="items/add" element={<AdminItemsAddPage />} />
-          <Route path="categories" element={<AdminCategoriesPage />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route
-            path="categories/:id/edit"
-            element={<AdminCategoriesEditPage />}
-          />
-          <Route path="categories/add" element={<AdminCategoriesAddPage />} />
-          <Route path="collections" element={<AdminCollectionsPage />} />
-          <Route
-            path="collections/:id/edit"
-            element={<AdminCollectionsEditPage />}
-          />
-          <Route path="collections/add" element={<AdminCollectionsAddPage />} />
-        </Route>
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/delivery" element={<DeliveryPage />} />
+        <Route
+        path="/account/*"
+        element={
+          <ProtectedRoute>
+            <AccountPage />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<AccountMainPage />} /> 
+        <Route path="favorites" element={<FavoritesItemPage />} />
+        <Route path="orders" element={<OrdersPage />} />
+      </Route>
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute>
+              <Routes>
+                <Route path="/" element={<AdminPage />}>
+                  <Route path="users" element={<AdminUsersPage />} />
+                  <Route
+                    path="users/:id/edit"
+                    element={<AdminUsersEditPage />}
+                  />
+                  <Route path="users/add" element={<AdminUsersAddPage />} />
+                  <Route path="orders" element={<AdminOrdersPage />} />
+                  <Route
+                    path="orders/:id/edit"
+                    element={<AdminOrdersEditPage />}
+                  />
+                  <Route path="orders/add" element={<AdminOrdersAddPage />} />
+                  <Route path="items" element={<AdminItemsPage />} />
+                  <Route
+                    path="items/:id/edit"
+                    element={<AdminItemsEditPage />}
+                  />
+                  <Route path="items/add" element={<AdminItemsAddPage />} />
+                  <Route path="categories" element={<AdminCategoriesPage />} />
+                  <Route
+                    path="categories/:id/edit"
+                    element={<AdminCategoriesEditPage />}
+                  />
+                  <Route
+                    path="categories/add"
+                    element={<AdminCategoriesAddPage />}
+                  />
+                  <Route
+                    path="collections"
+                    element={<AdminCollectionsPage />}
+                  />
+                  <Route
+                    path="collections/:id/edit"
+                    element={<AdminCollectionsEditPage />}
+                  />
+                  <Route
+                    path="collections/add"
+                    element={<AdminCollectionsAddPage />}
+                  />
+                </Route>
+              </Routes>
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 

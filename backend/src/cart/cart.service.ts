@@ -9,7 +9,7 @@ export class CartService {
     return this.prisma.cart.findMany();
   }
 
-  findOneByUserId(userId: number) {
+  findMyCart(userId: number) {
     return this.prisma.cart.findUnique({
       where: { userId },
       include: {
@@ -29,6 +29,30 @@ export class CartService {
         item: true,
       },
     });
+  }
+
+  async deleteItem(userId: number, itemId: number) {
+    const cart = await this.prisma.cart.findUnique({
+      where: { userId: userId },
+      select: { id: true },
+    });
+
+    if (!cart) {
+      throw new Error('User cart not found.');
+    }
+
+    const cartId = cart.id;
+
+    const deletedCartItem = await this.prisma.cartItem.delete({
+      where: {
+        cartId_itemId: {
+          cartId: cartId,
+          itemId: itemId,
+        },
+      },
+    });
+
+    return deletedCartItem;
   }
 
   async upsertCartItem(userId: number, itemId: number, quantityToAdd: number) {

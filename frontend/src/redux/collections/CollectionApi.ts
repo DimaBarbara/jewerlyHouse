@@ -3,7 +3,16 @@ import type { ICollection } from "../../models/ICollection";
 
 export const collectionAPI = createApi({
   reducerPath: "collectionApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:3000/api",
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   tagTypes: ["collection"],
   endpoints: (builder) => ({
     getCollections: builder.query<ICollection[], void>({

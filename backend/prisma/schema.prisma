@@ -34,6 +34,7 @@ model Item {
   image String?
   images String[]
   material String
+  isActive Boolean @default(true)
   category Category @relation(fields: [categoryId], references: [id])
   categoryId Int
   collection Collection @relation(fields: [collectionId], references: [id])

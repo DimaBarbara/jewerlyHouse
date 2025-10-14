@@ -57,17 +57,21 @@ export class UserService {
   }
 
   findAll() {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      include: { cart: true },
+    });
   }
 
   findOne(id: number) {
     return this.prisma.user.findUnique({
       where: { id },
+      include: { cart: true },
     });
   }
   async findOneByEmail(email: string) {
     return this.prisma.user.findUnique({
       where: { email },
+      include: { cart: true },
     });
   }
 

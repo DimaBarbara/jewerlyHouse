@@ -14,6 +14,12 @@ export class AuthController {
     return this.authService.login(req.user);
   }
 
+  // @UseGuards(LocalAuthGuard)
+  // @Post('/logout')
+  // logout() {
+  //   return this.authService.logout();
+  // }
+
   @Post('/register')
   async register(@Body() createUserDto: CreateUserDto) {
     return this.authService.register(createUserDto);
